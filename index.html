@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will You Be My Valentine?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: pink;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    h1 {
+      margin-top: 50px;
+      font-size: 2.5em;
+      color: crimson;
+    }
+    .button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #FF1493;
+      color: white;
+    }
+    .button:hover {
+      background-color: #C71585;
+    }
+    #result {
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+    /* Floating hearts and kisses */
+    .floating-heart, .floating-kiss {
+      position: absolute;
+      font-size: 2em;
+      animation: float 5s infinite ease-in-out;
+      opacity: 0.8;
+    }
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Will you be my valentine?</h1>
+  <button class="button" onclick="checkChoice(true)">Yes, Love 😘</button>
+  <button class="button" onclick="checkChoice(false)">No, damnit!</button>
+  <p id="result" class="hidden"></p>
+
+  <script>
+    function checkChoice(isRight) {
+      const result = document.getElementById('result');
+      if (isRight) {
+        result.textContent = '💋';
+        result.classList.remove('hidden');
+        startFloatingKisses();
+      } else {
+        result.textContent = 'Error: Sorry, your request cannot be processed!!! ⚠️';
+        result.classList.remove('hidden');
+      }
+    }
+
+    // Generate floating hearts with ❤️ emoji
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      heart.textContent = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 5 + 3 + 's';
+      heart.style.animationDelay = Math.random() * 3 + 's';
+      document.body.appendChild(heart);
+    }
+
+    // Function to create floating 💋 emoji
+    function startFloatingKisses() {
+      for (let i = 0; i < 20; i++) {
+        const kiss = document.createElement('div');
+        kiss.classList.add('floating-kiss');
+        kiss.textContent = '💋';
+        kiss.style.left = Math.random() * 100 + 'vw';
+        kiss.style.animationDuration = Math.random() * 5 + 3 + 's';
+        kiss.style.animationDelay = Math.random() * 3 + 's';
+        document.body.appendChild(kiss);
+      }
+    }
+  </script>
+</body>
+</html>
